@@ -1,0 +1,26 @@
+version: '3'
+services:
+  postgrest_api:
+    image: postgrest_local:latest
+    ports:
+      - "3000:3000"
+    environment:
+      PGRST_OPENAPI_SERVER_PROXY_URI: http://127.0.0.1:3000/api
+    depends_on:
+      - postgres_db
+  postgres_db:
+    image: postgres_local:latest
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+    # volumes:
+    #   - "./pgdata:/var/lib/postgresql/data"
+  hardened_api:
+    image: nginx_rev_proxy_local:latest
+    ports: 
+      - "3500:80"
+    depends_on:
+      - postgrest_api
