@@ -46,7 +46,11 @@ xmllint -> bruke x-path
 ### Python web-scraper  
 
 scrapy  
-xpath  
+
+```shell
+cd venv/boligannonse_scraper  
+scraper crawl finn  
+```
 
 
 ## Datalagring  
@@ -57,7 +61,7 @@ postgres som database
 
 ## TODO  
 
-* [ ] Kjøre rest-api og database i docker-compose  
+* [x] Kjøre rest-api og database i docker-compose  
 * [ ] Få POST- og GET- request til å fungere for data i boligannonse    
 * [ ] Lage automatisk testscript for POST og GET-request
 * [ ] Lage   
